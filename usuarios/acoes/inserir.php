@@ -1,5 +1,8 @@
 <?php
-require "../conexao.php";
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+
+require "../../conexao.php";
 
 $nome = $_GET['nome'];
 $email = $_GET['email'];
@@ -14,7 +17,7 @@ $resultado = $conn->query($sql);
 
 if ($resultado->num_rows > 0) {
 //  echo 'Email já cadastrado';
-header('Location:../esqueciminhasenhaaaa.php?msg=Podemos%20ajudar? Usuario ja existe');
+header('Location:../esqueciminhasenha.php?msg=Podemos%20ajudar? Usuario ja existe');
 
 } else {
 
@@ -25,7 +28,7 @@ header('Location:../esqueciminhasenhaaaa.php?msg=Podemos%20ajudar? Usuario ja ex
 
 
     if($conn->query($sql) === TRUE){
-        header('Location:../../logar.php?msg=Seu usuario foi cadastrado :) Faça login abaixo!');
+        header('Location:../login.php?msg=Seu usuario foi cadastrado :) Faça login abaixo!');
     }
     else{
         echo $nome . " Usuario nao foi inserido com sucesso :( ";

@@ -1,5 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header('Location:sas.php');
+header('Location:login.php');
 ?>

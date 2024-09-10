@@ -76,7 +76,7 @@
 
 <div class="register-container">
     <h2>Cadastre-se</h2>
-    <form action="acoes/inseriraa.php" method="GET">
+    <form action="acoes/inserir.php" method="GET">
         <input type="text" name="nome" placeholder="Nome" required>
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="senha" placeholder="Senha" required>
