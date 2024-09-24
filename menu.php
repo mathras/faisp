@@ -43,12 +43,14 @@
     </li>
     <li>Favoritos
         <ul>
+            <li><a href="<?php echo $host?>/favoritos/criar.php">Adicionar</a></li>
             <li><a href="<?php echo $host?>/favoritos/listar.php">Listar</a></li>
         </ul>
     </li>
     <li>FAQ
         <ul>
-            <li><a href="<?php echo $host?>/faq.php">Listar</a></li>
+            <li><a href="<?php echo $host?>/faq/criar.php"">Adicionar</a></li>
+            <li><a href="<?php echo $host?>/faq/listar.php"">Listar</a></li>
         </ul>
     </li>
     <li><a href="<?php echo $host?>/usuarios/logout.php">Sair</a></li>
