@@ -26,6 +26,7 @@ if(!isset($_SESSION['userId']) || $_SESSION['userId'] == ''){
         }
 
         .sidebar {
+            color:white;
             background-color: #2c3e50;
             width: 250px;
             padding: 20px;

@@ -1,17 +1,56 @@
 <?php
-    $host = '/cursofullstack/locadora';
+    $host = ''; // exemplo /faisp
+    if($host == '') echo "COLOQUE O DIRETORIO CORRETO NO ARQUIVO MENU.PHP";
 ?>
 
+<style>
+.sidebar {
+            color:white;
+}
+</style>
 <div class="sidebar">
-        <h2>Locadora</h2>
+<h2>Locadora</h2>
+<ul>
+    <li>Filmes
         <ul>
-            <li><a href="<?php echo $host?>/filmes/criar.php">Adicionar Filme</a></li>
-            <li><a href="<?php echo $host?>/filmes/listar.php">Listar Filmes</a></li>
-            <li><a href="<?php echo $host?>/usuarios/logout.php">Sair</a></li>
-
-            <!-- <li><a href="#">Adicionar Cliente</a></li>
-            <li><a href="#">Listar Clientes</a></li>
-            <li><a href="#">Atualizar Cliente</a></li>
-            <li><a href="#">Remover Cliente</a></li> -->
+            <li><a href="<?php echo $host?>/filmes/criar.php">Adicionar</a></li>
+            <li><a href="<?php echo $host?>/filmes/listar.php">Listar</a></li>
         </ul>
-    </div>
+    </li>
+    <li>Planos
+        <ul>
+            <li><a href="<?php echo $host?>/planos/criar.php">Adicionar</a></li>
+            <li><a href="<?php echo $host?>/planos/listar.php">Listar</a></li>
+        </ul>
+    </li>
+    <li>Categorias
+        <ul>
+            <li><a href="<?php echo $host?>/categorias/criar.php">Adicionar</a></li>
+            <li><a href="<?php echo $host?>/categorias/listar.php">Listar</a></li>
+        </ul>
+    </li>
+    <li>Usuários
+        <ul>
+            <li><a href="<?php echo $host?>/usuarios/criar.php">Adicionar</a></li>
+            <li><a href="<?php echo $host?>/usuarios/listar.php">Listar</a></li>
+        </ul>
+    </li>
+    <li>Avaliações
+        <ul>
+            <li><a href="<?php echo $host?>/avaliacoes/criar.php">Adicionar</a></li>
+            <li><a href="<?php echo $host?>/avaliacoes/listar.php">Listar</a></li>
+        </ul>
+    </li>
+    <li>Favoritos
+        <ul>
+            <li><a href="<?php echo $host?>/favoritos/listar.php">Listar</a></li>
+        </ul>
+    </li>
+    <li>FAQ
+        <ul>
+            <li><a href="<?php echo $host?>/faq.php">Listar</a></li>
+        </ul>
+    </li>
+    <li><a href="<?php echo $host?>/usuarios/logout.php">Sair</a></li>
+</ul>
+</div>
