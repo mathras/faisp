@@ -1,7 +1,4 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-
 require "../../conexao.php";
 
 $nome = $_GET['nome'];
@@ -28,7 +25,7 @@ header('Location:../esqueciminhasenha.php?msg=Podemos%20ajudar? Usuario ja exist
 
 
     if($conn->query($sql) === TRUE){
-        header('Location:../login.php?msg=Seu usuario foi cadastrado :) Faça login abaixo!');
+        header('Location:../../logar.php?msg=Seu usuario foi cadastrado :) Faça login abaixo!');
     }
     else{
         echo $nome . " Usuario nao foi inserido com sucesso :( ";

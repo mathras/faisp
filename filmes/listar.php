@@ -1,5 +1,17 @@
+<?php
+require "../conexao.php";
+
+$sql = "SELECT * FROM `filmes` where deleted_by is null";
+
+$resultado = $conn->query($sql);
+
+$conn->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,11 +92,14 @@
             margin-top: 20px;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid #ddd;
         }
 
-        th, td {
+        th,
+        td {
             padding: 12px;
             text-align: left;
         }
@@ -103,28 +118,18 @@
         }
     </style>
 </head>
+
 <body>
 
-    <div class="sidebar">
-        <h2>Locadora</h2>
-        <ul>
-            <li><a href="#">Adicionar Filme</a></li>
-            <li><a href="#">Listar Filmes</a></li>
-            <li><a href="#">Atualizar Filme</a></li>
-            <li><a href="#">Remover Filme</a></li>
-            <li><a href="#">Adicionar Cliente</a></li>
-            <li><a href="#">Listar Clientes</a></li>
-            <li><a href="#">Atualizar Cliente</a></li>
-            <li><a href="#">Remover Cliente</a></li>
-        </ul>
-    </div>
+    <?php require "../menu.php"; ?>
 
     <div class="main-content">
         <h1>Listar Filmes</h1>
-        
+
         <table>
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Título</th>
                     <th>Gênero</th>
                     <th>Data de Lançamento</th>
@@ -134,32 +139,46 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Filme Exemplo 1</td>
-                    <td>Ação</td>
-                    <td>2024-05-15</td>
-                    <td>Diretor Exemplo</td>
-                    <td>PG-13</td>
-                    <td>
-                        <a href="#">Editar</a> | 
-                        <a href="#" style="color: red;">Excluir</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Filme Exemplo 2</td>
-                    <td>Comédia</td>
-                    <td>2024-06-10</td>
-                    <td>Diretor Exemplo 2</td>
-                    <td>R</td>
-                    <td>
-                        <a href="#">Editar</a> | 
-                        <a href="#" style="color: red;">Excluir</a>
-                    </td>
-                </tr>
-                <!-- Adicione mais linhas conforme necessário -->
+                <?php
+
+                while ($row = $resultado->fetch_assoc()) {
+                    $data = new DateTime($row["dataDeLancamento"]);
+                    $data = $data->format("d/m/Y");
+
+                    $diretor = $row["diretor"];
+
+                    if ($diretor == '') {
+                        $diretor = 'Não informado';
+                    }
+
+                    $genero = $row["genero"];
+
+                    if ($genero == "acao") {
+                        $genero = "Ação";
+                    }
+
+                    ?>
+                    <tr>
+                        <td><?php echo $row["id"] ?></td>
+                        <td><?php echo $row["titulo"] ?></td>
+                        <td><?php echo $genero ?></td>
+                        <td><?php echo $data?></td>
+                        <td><?php echo $diretor?></td>
+                        <td><?php echo $row["classificacao"] ?></td>
+                        <td>
+                            <a href="atualizar.php?id=<?php echo $row['id']; ?>">Editar</a>
+                            <a href="deletar.php?id=<?php echo $row['id']; ?>" style="color: red;">Excluir</a>
+    <!--                             deletar.php?id=1 -->
+    <!-- http://localhost/cursofullstack/locadora/filmes/deletar.php?id=1 -->
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
             </tbody>
         </table>
     </div>
 
 </body>
+
 </html>

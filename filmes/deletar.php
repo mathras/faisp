@@ -1,5 +1,26 @@
+<?php
+
+require "../conexao.php";
+
+if(!isset($_GET['id'])) {
+    header('Location:listar.php');
+}
+$id = $_GET['id'];
+
+
+$sql = "SELECT * FROM `filmes` where id = $id";
+
+$resultado = $conn->query($sql);
+
+$row = $resultado->fetch_assoc();
+
+$conn->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -107,7 +128,8 @@
         }
 
         .form-group .confirm {
-            background-color: #e74c3c; /* Vermelho para confirmar a exclusão */
+            background-color: #e74c3c;
+            /* Vermelho para confirmar a exclusão */
         }
 
         .form-group .confirm:hover {
@@ -115,7 +137,8 @@
         }
 
         .form-group .cancel {
-            background-color: #3498db; /* Azul para cancelar */
+            background-color: #3498db;
+            /* Azul para cancelar */
         }
 
         .form-group .cancel:hover {
@@ -123,41 +146,31 @@
         }
     </style>
 </head>
+
 <body>
 
-    <div class="sidebar">
-        <h2>Locadora</h2>
-        <ul>
-            <li><a href="#">Adicionar Filme</a></li>
-            <li><a href="#">Listar Filmes</a></li>
-            <li><a href="#">Atualizar Filme</a></li>
-            <li><a href="#">Remover Filme</a></li>
-            <li><a href="#">Adicionar Cliente</a></li>
-            <li><a href="#">Listar Clientes</a></li>
-            <li><a href="#">Atualizar Cliente</a></li>
-            <li><a href="#">Remover Cliente</a></li>
-        </ul>
-    </div>
+    <?php require "../menu.php"; ?>
 
     <div class="main-content">
-        <h1>Excluir Filme</h1>
-        
+        <h1>Excluir Filme #<?php echo $row['id']?></h1>
         <div class="item-details">
-            <p><strong>Título:</strong> Filme Exemplo</p>
-            <p><strong>Gênero:</strong> Ação</p>
-            <p><strong>Data de Lançamento:</strong> 2024-05-15</p>
-            <p><strong>Diretor:</strong> Diretor Exemplo</p>
-            <p><strong>Classificação:</strong> PG-13</p>
-            <p><strong>Descrição:</strong> Descrição do filme exemplo...</p>
+            <p><strong>Título:</strong> <?php echo $row['titulo']?></p>
+            <p><strong>Gênero:</strong> <?php echo $row['genero']?></p>
+            <p><strong>Data de Lançamento:</strong> <?php echo $row['dataDeLancamento']?></p>
+            <p><strong>Diretor:</strong> <?php echo $row['diretor']?></p>
+            <p><strong>Classificação:</strong> <?php echo $row['classificacao']?></p>
+            <p><strong>Descrição:</strong> <?php echo $row['descricao']?></p>
         </div>
-        
+
         <div class="form-group">
-            <form action="#" method="post">
+            <form action="acoes/deletarAcao.php" method="GET">
+                <input type="hidden" value="<?php echo $row['id']?>" name="id">
                 <button type="submit" class="confirm">Excluir</button>
-                <a href="#" class="cancel">Cancelar</a>
+                <a href="listar.php" class="cancel">Cancelar</a>
             </form>
         </div>
     </div>
 
 </body>
+
 </html>

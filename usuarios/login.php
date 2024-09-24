@@ -6,7 +6,7 @@ if(isset($_SESSION['userId']) && $_SESSION['userId'] != ''){
 }
 $msg = '';
 if(isset($_GET['msg'])){
-    $msg = $_GET['msg'];
+$msg = $_GET['msg'];
 }
 
 ?>

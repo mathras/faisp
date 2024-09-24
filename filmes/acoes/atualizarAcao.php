@@ -10,9 +10,15 @@ $dataDeLancamento = $_GET['dataDeLancamento'];
 $classificacao = $_GET['classificacao'];
 $diretor = $_GET['diretor'];
 $descricao = $_GET['descricao'];
-$createdBy = $_SESSION['userId'];
+$usuarioLogado = $_SESSION['userId'];
 
-$sql = "INSERT INTO filmes (titulo, genero, dataDeLancamento, classificacao, diretor, descricao, created_by ) VALUES('$titulo', '$genero', '$dataDeLancamento', $classificacao, '$diretor', '$descricao', $createdBy )";
+$id = $_GET['id'];
+
+
+$sql = "UPDATE `filmes` SET `titulo`='$titulo',`genero`='$genero',`dataDeLancamento`='$dataDeLancamento',`classificacao`='$classificacao',
+`diretor`='$diretor',`descricao`='$descricao',`updated_at`= CURRENT_TIMESTAMP,`updated_by`= $usuarioLogado WHERE id = $id";
+
+echo $sql;
 
 
 if ($conn->query($sql) === TRUE) {
