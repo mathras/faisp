@@ -1,0 +1,1 @@
+CREATE TABLE `faisp`.`agenda` (`id` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(1024) NOT NULL , `telefone` VARCHAR(1024) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
