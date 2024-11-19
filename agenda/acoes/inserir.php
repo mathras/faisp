@@ -4,22 +4,17 @@ require "../../conexao.php";
 
 session_start();
 
-$titulo = $_GET['titulo'];
-$genero = $_GET['genero'];
-$dataDeLancamento = $_GET['dataDeLancamento'];
-$classificacao = $_GET['classificacao'];
-$diretor = $_GET['diretor'];
-$descricao = $_GET['descricao'];
-$createdBy = $_SESSION['userId'];
+$nome = $_GET['nome'];
+$telefone = $_GET['telefone'];
 
-$sql = "INSERT INTO filmes (titulo, genero, dataDeLancamento, classificacao, diretor, descricao, created_by ) VALUES('$titulo', '$genero', '$dataDeLancamento', $classificacao, '$diretor', '$descricao', $createdBy )";
+$sql = "INSERT INTO agenda (nome,telefone) VALUES('$nome', '$telefone')";
 
 
 if ($conn->query($sql) === TRUE) {
     $conn->close();
-    header('Location:../criar.php?msg=filme '. $titulo .' cadastrado :)');
+    header('Location:../agenda.php?msg=filme');
 } else {
-    echo $titulo . "nao foi inserido com sucesso :( ";
+    echo "nao foi inserido com sucesso :( ";
 
 }
 

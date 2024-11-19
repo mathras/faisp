@@ -1,3 +1,15 @@
+<?php
+require "../conexao.php";
+$sql = "select * from agenda";
+
+$dados = $conn->query($sql);
+
+while ($row = $dados->fetch_assoc()) {
+    print_r($row);
+}
+
+?>
+
 <form method="get" action="acoes/inserir.php">
     Nome:<br>
     <input type="text" name="nome">

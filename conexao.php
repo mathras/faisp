@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 $host = '127.0.0.1';
 $user = 'root';
 $password = '';
-$database = 'fullstack';
+$database = 'faisp';
 
 
 $conn = new mysqli($host, $user, $password, $database);
