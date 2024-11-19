@@ -4,9 +4,6 @@ $sql = "select * from agenda";
 
 $dados = $conn->query($sql);
 
-while ($row = $dados->fetch_assoc()) {
-    print_r($row);
-}
 
 ?>
 
@@ -50,20 +47,18 @@ if (isset($_SESSION['agenda'])) {
     <tbody>
 
         <?php
-        if (isset($_SESSION['agenda'])) {
-            for ($i = 0; $i < count($_SESSION['agenda']); $i++) {
-                //print_r($_SESSION['agenda'][$i]);
-                ?>
+        while ($row = $dados->fetch_assoc()) {
+            //print_r($_SESSION['agenda'][$i]);
+            ?>
 
 
-                <tr>
-                    <td><?php echo $i ?></td>
-                    <td><?php echo $_SESSION['agenda'][$i]['nome'] ?></td>
-                    <td><?php echo $_SESSION['agenda'][$i]['telefone'] ?></td>
-                </tr>
-                <?php
+            <tr>
+                <td><?php echo $row['id'] ?></td>
+                <td><?php echo $row['nome'] ?></td>
+                <td><?php echo $row['telefone'] ?></td>
+            </tr>
+            <?php
 
-            }
         }
         ?>
 
